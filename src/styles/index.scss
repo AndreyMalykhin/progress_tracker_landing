@@ -1,4 +1,27 @@
 $mockup-path: "~html5-device-mockups/device-mockups";
+$red: #ef5350;
+$primary: $red;
+$secondary: #f5f5f5;
 
 @import "~bootstrap/scss/bootstrap";
 @import "~html5-device-mockups/src/scss/device-mockups";
+
+.header-logo {
+  width: 4rem;
+  height: 4rem;
+}
+
+.hero-app-store-btn svg {
+  width: 120px;
+  height: 40px;
+}
+
+.features-item-icon svg {
+  fill: currentColor;
+}
+
+.section-title {
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
