@@ -3,7 +3,12 @@ $red: #ef5350;
 $primary: $red;
 $secondary: #f5f5f5;
 
-@import "~bootstrap/scss/bootstrap";
+@import "~bootstrap/scss/bootstrap-reboot";
+@import "~bootstrap/scss/bootstrap-grid";
+@import "~bootstrap/scss/utilities";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/images";
+@import "~bootstrap/scss/card";
 @import "~html5-device-mockups/src/scss/device-mockups";
 
 .header-logo {
@@ -24,4 +29,17 @@ $secondary: #f5f5f5;
   text-align: center;
   text-transform: uppercase;
   margin-bottom: 0;
+}
+
+.footer-link {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  color: $white;
+  text-decoration: underline;
+}
+
+.testimonials-item-avatar {
+  border-radius: 50%;
+  width: 8rem;
+  height: 8rem;
 }

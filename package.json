@@ -4,16 +4,19 @@
   "license": "MIT",
   "scripts": {
     "start": "cd build && http-server -a localhost -p 3000",
-    "dev": "env-cmd ./.env.local webpack --watch --display-modules"
+    "dev": "env-cmd ./.env.local webpack --watch --display-modules",
+    "build-prod": "env-cmd ./.env.production.local webpack --display-modules"
   },
   "devDependencies": {
     "autoprefixer": "^8.4.1",
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^0.28.11",
     "env-cmd": "^8.0.1",
+    "favicons-webpack-plugin": "^0.0.9",
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.2.0",
     "http-server": "^0.11.1",
+    "image-webpack-loader": "^4.2.0",
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.9.0",
     "postcss-loader": "^2.1.5",
@@ -28,6 +31,7 @@
   },
   "dependencies": {
     "bootstrap": "^4.1.1",
-    "html5-device-mockups": "^3.2.1"
+    "html5-device-mockups": "^3.2.1",
+    "lazysizes": "^4.0.2"
   }
 }

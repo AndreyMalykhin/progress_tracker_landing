@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="">
+<html lang="en" <% if (htmlWebpackPlugin.files.manifest) { %> manifest="<%= htmlWebpackPlugin.files.manifest %>"<% } %>>
 
 <head>
   <meta charset="utf-8">
@@ -29,10 +29,10 @@
   <section class="hero bg-primary text-white py-5">
     <div class="container">
       <div class="row align-items-center">
-        <div class="col-12 col-md-6">
-          <h1 class="display-4 text-uppercase">It's amazing</h1>
-          <p class="lead">Lucy is the best Responsive App Landing Page designed with Bootstrap 3, HTML5 and CSS3. You can use this Responsive App Landing Page for any kinds of app and game.</p>
-          <div class="text-center text-md-left pt-2">
+        <div class="col-12 col-md-6 text-center text-md-left">
+          <h1 class="display-4 text-uppercase">Completoo</h1>
+          <p class="lead">This app will help you be a doer, not just a dreamer. Set up your ambitious goals, conquer the peaks of your dreams and let your friends be the audience.</p>
+          <div class="pt-2">
             <a class="hero-app-store-btn d-inline-block" href="https://itunes.apple.com/us/app/completoo/id1380279998">
               <%= require('images/app-store-btn.svg') %>
             </a>
@@ -41,10 +41,8 @@
 
         <div class="col-12 col-md-6 d-flex justify-content-center pt-5 pt-md-0">
           <div class="device-wrapper">
-            <div class="device" data-device="iPhone7" data-orientation="portrait" data-color="white">
-              <div class="screen">
-                <img class="img-fluid" src="https://loremflickr.com/254/457/cat" alt="Screenshot" />
-              </div>
+            <div class="device" data-device="iPhone7" data-orientation="portrait" data-color="red">
+              <div class="screen"><img class="w-100 h-100" src="<%= require('images/screenshot-active.jpg') %>" alt="Screenshot" /></div>
               <div class="button"></div>
             </div>
           </div>
@@ -57,7 +55,7 @@
     <div class="container">
       <div class="row">
         <div class="col-12 pb-5">
-          <h2 class="section-title">Features</h1>
+          <h1 class="section-title">Features</h1>
         </div>
         <div class="col-12">
           <div class="card-deck">
@@ -101,21 +99,25 @@
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <h2 class="section-title">Screenshots</h1>
+          <h1 class="section-title">Screenshots</h1>
         </div>
         <div class="col-12">
-          <div class="row">
+          <div class="row justify-content-center">
             <%
             var screenshots = [
-              "https://loremflickr.com/300/600/cat?" + Math.random(),
-              "https://loremflickr.com/300/600/cat?" + Math.random(),
-              "https://loremflickr.com/300/600/cat?" + Math.random()
+              require("images/screenshot-pending-review.jpg"),
+              require("images/screenshot-archive.jpg"),
+              require("images/screenshot-leaders.jpg"),
+              require("images/screenshot-activities.jpg"),
+              require("images/screenshot-friends.jpg"),
+              require("images/screenshot-profile-form.jpg"),
+              require("images/screenshot-trackable-form.jpg"),
             ];
             %>
             <% for (var i = 0; i < screenshots.length; ++i) { %>
 
-            <div class="col-12 col-md text-center pt-5">
-              <img class="img-fluid rounded" src="<%= screenshots[i] %>" alt="Screenshot" />
+            <div class="col-12 col-md-6 col-lg-4 text-center pt-5">
+              <img class="img-fluid img-thumbnail rounded lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="<%= screenshots[i] %>" alt="Screenshot" />
             </div>
 
             <% } %>
@@ -129,30 +131,30 @@
     <div class="container">
       <div class="row">
         <div class="col-12 pb-5">
-          <h2 class="section-title">Testimonials</h1>
+          <h1 class="section-title">Testimonials</h1>
         </div>
         <div class="col-12">
           <div class="card-deck">
             <%
             var testimonials = [
               {
-                body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
-                author: "Jane Doe",
-                company: "CEO, Apple Inc.",
-                avatar: "https://loremflickr.com/128/128/cat?" + Math.random()
+                body: "It's not just a piece of software, this app motivates me by letting my friends motivate me. Now I see there's a lot of people in this world who can be genuinely happy for my achievements and this is a true engine of success in anything you do.",
+                author: "Iryna Kovalyova",
+                company: "Marketing specialist",
+                avatar: require("images/avatar2.jpg")
               },
               {
                 body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
                 author: "John Doe",
                 company: "CEO, Google Inc.",
-                avatar: "https://loremflickr.com/128/128/cat?" + Math.random()
+                avatar: require("images/avatar.jpg")
               }
             ];
             %>
             <% for (var i = 0; i < testimonials.length; ++i) { %>
 
             <div class="card border-0 text-center align-items-center">
-              <img class="rounded-circle" src="<%= testimonials[i].avatar %>" />
+              <img class="testimonials-item-avatar lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="<%= testimonials[i].avatar %>" alt="Avatar" />
               <div class="card-body">
                 <blockquote class="blockquote text-center">
                   <p><%= testimonials[i].body %></p>
@@ -168,11 +170,21 @@
     </div>
   </section>
 
-  <footer class="row py-4 bg-primary text-white">
+  <footer class="footer row py-4 bg-primary text-white text-center">
     <div class="col">
-      <p class="text-center mb-0">&copy; Completoo 2018. All rights reserved.</p>
+      <p>&copy; Completoo 2018. All rights reserved.</p>
+      <p class="mb-0">
+        <a class="footer-link" href="https://goo.gl/forms/VOEnPqky1HBt3Trt2">Contact us</a>
+        <a class="footer-link" href="https://www.iubenda.com/privacy-policy/13952101/full-legal">Privacy policy</a>
+      </p>
     </div>
   </footer>
+
+  <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+
+    <script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+
+  <% } %>
 </body>
 
 </html>

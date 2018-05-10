@@ -2,12 +2,46 @@ const path = require("path");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 
 const isDevEnv = process.env.NODE_ENV === "development";
 let devtool = "inline-source-map";
+const svgLoaders = [
+  {
+    loader: "svg-inline-loader"
+  }
+];
+const imgLoaders = [
+  {
+    loader: "url-loader",
+    options: {
+      limit: 8192,
+      name: "[name].[hash].[ext]"
+    }
+  }
+];
 
 if (!isDevEnv) {
   devtool = "source-map";
+  const imgOptimizingLoader = {
+    loader: "image-webpack-loader",
+    options: {
+      bypassOnDebug: true,
+      svgo: {
+        plugins: [
+          { removeViewBox: false },
+          { removeDimensions: false },
+          { convertPathData: false },
+          { mergePaths: false }
+        ]
+      },
+      mozjpeg: {
+        quality: 85
+      }
+    }
+  };
+  svgLoaders.push(imgOptimizingLoader);
+  imgLoaders.push(imgOptimizingLoader);
 }
 
 module.exports = {
@@ -17,19 +51,11 @@ module.exports = {
     rules: [
       {
         test: /\.svg$/,
-        loader: 'svg-inline-loader'
+        use: svgLoaders
       },
       {
         test: /\.(png|jpg|gif)$/,
-        use: [
-          {
-            loader: "url-loader",
-            options: {
-              limit: 8192,
-              name: "[name].[hash].[ext]"
-            }
-          }
-        ]
+        use: imgLoaders
       },
       {
         test: /\.(scss)$/,
@@ -60,13 +86,21 @@ module.exports = {
     modules: [path.resolve(__dirname, "src"), "node_modules"]
   },
   entry: {
-    bundle: path.resolve(__dirname, "src", "styles", "index.scss")
+    bundle: path.resolve(__dirname, "src", "scripts", "index.js")
   },
   output: {
-    path: path.resolve(__dirname, "build")
+    path: path.resolve(__dirname, "build"),
+    filename: "[name].[hash].js"
   },
   plugins: [
     new CleanWebpackPlugin([path.resolve(__dirname, "build")]),
+    new FaviconsWebpackPlugin({
+      logo: path.resolve(__dirname, "src", "images", "logo.png"),
+      prefix: "icons-[hash]/",
+      persistentCache: true,
+      inject: true,
+      title: "Completoo"
+    }),
     new MiniCssExtractPlugin({
       filename: "[name].[hash].css"
     }),
