@@ -5,7 +5,9 @@
   "scripts": {
     "start": "cd build && http-server -a localhost -p 3000",
     "dev": "env-cmd ./.env.local webpack --watch --display-modules",
-    "build-prod": "env-cmd ./.env.production.local webpack --display-modules"
+    "build-prod": "env-cmd ./.env.production.local webpack --display-modules",
+    "docker-build-prod":
+      "env $(cat .env.production.local | xargs) docker build -t progresstracker:landing --target server --build-arg PT_DIR_PATH --build-arg PT_SERVER_NAME ."
   },
   "devDependencies": {
     "autoprefixer": "^8.4.1",
