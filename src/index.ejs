@@ -101,26 +101,32 @@
         <div class="col-12">
           <h1 class="section-title">Screenshots</h1>
         </div>
-        <div class="col-12">
-          <div class="row justify-content-center">
-            <%
-            var screenshots = [
-              require("images/screenshot-pending-review.jpg"),
-              require("images/screenshot-archive.jpg"),
-              require("images/screenshot-leaders.jpg"),
-              require("images/screenshot-activities.jpg"),
-              require("images/screenshot-friends.jpg"),
-              require("images/screenshot-profile-form.jpg"),
-              require("images/screenshot-trackable-form.jpg"),
-            ];
-            %>
-            <% for (var i = 0; i < screenshots.length; ++i) { %>
+        <div class="col-12 pt-5">
+          <div class="swiper-container">
+            <div class="swiper-wrapper">
+              <%
+              var screenshots = [
+                require("images/screenshot-pending-review.jpg"),
+                require("images/screenshot-archive.jpg"),
+                require("images/screenshot-leaders.jpg"),
+                require("images/screenshot-activities.jpg"),
+                require("images/screenshot-friends.jpg"),
+                require("images/screenshot-profile-form.jpg"),
+                require("images/screenshot-trackable-form.jpg"),
+              ];
+              %>
+              <% for (var i = 0; i < screenshots.length; ++i) { %>
 
-            <div class="col-12 col-md-6 col-lg-4 text-center pt-5">
-              <img class="img-fluid img-thumbnail rounded lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="<%= screenshots[i] %>" alt="Screenshot" />
+              <div class="swiper-slide text-center">
+                <img class="screenshots-item-img swiper-lazy" data-src="<%= screenshots[i] %>" alt="Screenshot" />
+                <div class="swiper-lazy-preloader"></div>
+              </div>
+
+              <% } %>
             </div>
-
-            <% } %>
+            <div class="swiper-pagination pt-3"></div>
+            <div class="swiper-button-prev">&#10094;</div>
+            <div class="swiper-button-next">&#10095;</div>
           </div>
         </div>
       </div>
