@@ -54,6 +54,7 @@ $secondary: #f5f5f5;
   border-radius: 50%;
   width: 8rem;
   height: 8rem;
+  opacity: 0;
 }
 
 .screenshots-item-img {
@@ -61,6 +62,7 @@ $secondary: #f5f5f5;
   max-width: 100%;
   height: auto;
   border: 1px solid $gray-400;
+  opacity: 0;
 }
 
 .swiper-container-horizontal {
@@ -91,6 +93,11 @@ $secondary: #f5f5f5;
     font-size: 4rem;
     width: auto;
     height: auto;
+    opacity: 0.5;
+
+    &.swiper-button-disabled {
+      opacity: 0;
+    }
   }
 
   .swiper-lazy-preloader {
@@ -98,14 +105,10 @@ $secondary: #f5f5f5;
   }
 }
 
-.lazyload,
-.swiper-lazy {
-  opacity: 0;
-}
-
 .swiper-lazy-loaded,
 .lazyloaded {
   animation-name: fadeIn;
+  animation-delay: 1s;
   animation-duration: 1s;
   animation-fill-mode: forwards;
 }
