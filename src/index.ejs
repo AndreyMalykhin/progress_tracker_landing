@@ -62,33 +62,52 @@
             <%
             var features = [
               {
-                title: "Responsive design",
-                body: "This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
+                title: "Track goals",
+                body: "Set up and track your goals, and motivate yourself to do more than you could even imagine!",
+                icon: require("images/format-list-checks.svg")
               },
               {
-                title: "6 color schemes",
-                body: "The set of ready made CSS files with different color schemes will help you in quick landing’s adaptation according to your benchmark style."
+                title: "Share success",
+                body: "Mission complete? Share your success with your friends and let them approve and rate your results.",
+                icon: require("images/share-variant.svg")
               },
               {
-                title: "PSD is included",
-                body: "The graphic source file in PSD format is included in the archive."
+                title: "Rate friends",
+                body: "Follow your friends, keep an eye on how they progress with their goals and give your feedback.",
+                icon: require("images/thumb-up.svg")
               },
               {
-                title: "Well documentation",
-                body: "LUCY is shipped with well documented moduler codes. Meaningfull Comments in code will help you to customize it easily."
+                title: "Be a leader",
+                body: "Achieve more goals, get rating points, become a Completoo Leader and motivate others to be doers!",
+                icon: require("images/trophy.svg")
+              },
+              {
+                title: "Offline mode",
+                body: "Use Completoo not only as a social sharing goal tracker, but also as a regular goal tracker in offline mode.",
+                icon: require("images/flash-circle.svg")
+              },
+              {
+                title: "Free forever",
+                body: "Completoo is totally fee for everyone, there is no limitations on a number of goals, and it is available worldwide",
+                icon: require("images/currency-usd-off.svg")
               }
             ];
             %>
             <% for (var i = 0; i < features.length; ++i) { %>
 
             <div class="card border-0 text-center align-items-center">
-              <div class="features-item-icon w-25 text-primary"><%= require('images/check.svg') %></div>
+              <div class="features-item-icon"><%= features[i].icon %></div>
               <div class="card-body">
                 <h5 class="card-title text-uppercase"><%= features[i].title %></h5>
                 <p class="card-text"><%= features[i].body %></p>
               </div>
             </div>
 
+              <% if (i % 3 === 2) { %>
+
+              <div class="w-100 d-none d-md-block"></div>
+
+              <% } %>
             <% } %>
         </div>
       </div>
@@ -137,7 +156,7 @@
     <div class="container">
       <div class="row">
         <div class="col-12 pb-5">
-          <h1 class="section-title">Testimonials</h1>
+          <h1 class="section-title">User Reviews</h1>
         </div>
         <div class="col-12">
           <div class="card-deck">
@@ -145,14 +164,14 @@
             var testimonials = [
               {
                 body: "It's not just a piece of software, this app motivates me by letting my friends motivate me. Now I see there's a lot of people in this world who can be genuinely happy for my achievements and this is a true engine of success in anything you do.",
-                author: "Iryna Kovalyova",
-                company: "Marketing specialist",
+                author: "Iryna Kovalova",
+                company: "Marketing Specialist",
                 avatar: require("images/avatar2.jpg")
               },
               {
-                body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
-                author: "John Doe",
-                company: "CEO, Google Inc.",
+                body: "I'm very happy with this app, it is really a place where you get motivation from others. It's amazing to see how cool some of my friends are!",
+                author: "Andrii Malykhin",
+                company: "Software Engineer",
                 avatar: require("images/avatar.jpg")
               }
             ];
@@ -176,14 +195,12 @@
     </div>
   </section>
 
-  <footer class="footer row py-4 bg-primary text-white text-center">
-    <div class="col">
-      <p>&copy; Completoo 2018. All rights reserved.</p>
-      <p class="mb-0">
-        <a class="footer-link" href="https://goo.gl/forms/30XsvtjIBJi1NiEA2">Contact us</a>
-        <a class="footer-link" href="https://www.iubenda.com/privacy-policy/13952101/full-legal">Privacy policy</a>
-      </p>
-    </div>
+  <footer class="footer py-4 bg-primary text-white text-center">
+    <p>&copy; Completoo 2018. All rights reserved.</p>
+    <p class="mb-0">
+      <a class="footer-link" href="https://goo.gl/forms/30XsvtjIBJi1NiEA2">Contact us</a>
+      <a class="footer-link" href="https://www.iubenda.com/privacy-policy/13952101/full-legal">Privacy policy</a>
+    </p>
   </footer>
 
   <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
