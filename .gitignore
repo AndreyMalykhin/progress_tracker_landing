@@ -1,5 +1,6 @@
 node_modules/
 build/
+.vscode/
 .env.local
 .env.production.local
 .DS_Store
